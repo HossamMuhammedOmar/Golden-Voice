@@ -1,9 +1,11 @@
-import "./App.css";
+import Song from "./components/Song";
+import Player from "./components/Player";
 
 function App() {
   return (
     <div className="App">
-      <h1>Hello World!</h1>
+      <Song />
+      <Player />
     </div>
   );
 }
