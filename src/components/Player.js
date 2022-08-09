@@ -2,6 +2,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useRef, useState } from "react";
 import {
   faPlay,
+  faPause,
   faAngleLeft,
   faAngleRight,
 } from "@fortawesome/free-solid-svg-icons";
@@ -32,17 +33,28 @@ export default function Player({ activeQuran, isPlaying, setIsPlaying }) {
     setSoundInfo({ ...soundInfo, currentTime: current, duration });
   };
 
+  const dragHandler = (e) => {
+    audioRef.current.currentTime = e.target.value;
+    setSoundInfo({ ...soundInfo, currentTime: e.target.value });
+  };
+
   // States
   const [soundInfo, setSoundInfo] = useState({
-    currentTime: null,
-    duration: null,
+    currentTime: 0,
+    duration: 0,
   });
 
   return (
     <div className="player-container">
       <div className="time-control">
         <p>{timeFormat(soundInfo.currentTime)}</p>
-        <input type="range" />
+        <input
+          onChange={dragHandler}
+          min={0}
+          max={soundInfo.duration}
+          value={soundInfo.currentTime}
+          type="range"
+        />
         <p>{timeFormat(soundInfo.duration)}</p>
       </div>
       <div className="play-control">
@@ -51,7 +63,7 @@ export default function Player({ activeQuran, isPlaying, setIsPlaying }) {
           onClick={playHandler}
           className="play"
           size="2x"
-          icon={faPlay}
+          icon={isPlaying ? faPause : faPlay}
         />
         <FontAwesomeIcon
           className="skip-forward"
@@ -61,6 +73,7 @@ export default function Player({ activeQuran, isPlaying, setIsPlaying }) {
       </div>
       <audio
         onTimeUpdate={timeUpdateHandler}
+        onLoadedMetadata={timeUpdateHandler}
         type="audio/mp3"
         ref={audioRef}
         src={activeQuran.audio}
