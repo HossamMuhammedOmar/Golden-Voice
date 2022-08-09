@@ -6,13 +6,19 @@ import {
   faAngleRight,
 } from "@fortawesome/free-solid-svg-icons";
 
-export default function Player({ activeQuran }) {
+export default function Player({ activeQuran, isPlaying, setIsPlaying }) {
   // Ref
   const audioRef = useRef(null);
 
   // Event Handler
   const playHandler = () => {
-    console.log(audioRef.current);
+    if (isPlaying) {
+      audioRef.current.pause();
+      setIsPlaying(!isPlaying);
+    } else {
+      audioRef.current.play();
+      setIsPlaying(!isPlaying);
+    }
   };
 
   return (
@@ -36,7 +42,7 @@ export default function Player({ activeQuran }) {
           icon={faAngleRight}
         />
       </div>
-      <audio ref={audioRef} src={activeQuran.audio}></audio>
+      <audio type="audio/mp3" ref={audioRef} src={activeQuran.audio}></audio>
     </div>
   );
 }
