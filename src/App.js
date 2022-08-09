@@ -11,7 +11,7 @@ function App() {
   return (
     <div className="App">
       <Song activeQuran={currentQuran} />
-      <Player />
+      <Player activeQuran={currentQuran} />
     </div>
   );
 }
