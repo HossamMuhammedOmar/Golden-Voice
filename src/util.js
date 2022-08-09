@@ -5,7 +5,7 @@ function quran() {
     {
       name: "تلاوات قصيرة",
       cover:
-        "https://media.istockphoto.com/photos/hagia-sophia-the-most-important-tourist-attraction-of-istanbul-turkey-picture-id1214717930?k=20&m=1214717930&s=612x612&w=0&h=6xEz8HBGU92gq-lPEJG4vLSuFP81hnSVMPHY2qlyF1g=",
+        "https://wallpapers.com/images/high/islamic-mosque-at-sunset-xptqk5xw6adpezzv.jpg",
       artist: "القارئ محمد صديق المنشاوي",
       audio:
         "https://drive.google.com/file/d/1-sJrSZ0J2UOWEdhT0c_KXz72KcWIo6En/view?usp=sharing",
@@ -16,7 +16,7 @@ function quran() {
     {
       name: "تلاوات قصيرة",
       cover:
-        "https://media.istockphoto.com/photos/hagia-sophia-the-most-important-tourist-attraction-of-istanbul-turkey-picture-id1214717930?k=20&m=1214717930&s=612x612&w=0&h=6xEz8HBGU92gq-lPEJG4vLSuFP81hnSVMPHY2qlyF1g=",
+        "https://images.squarespace-cdn.com/content/v1/5d016c1ba9f2e7000120c08c/1560579210527-7LDCZH62S91OLOJIKAE9/AdobeStock_87517185.jpeg",
       artist: "القارئ محمد صديق المنشاوي",
       audio:
         "https://drive.google.com/file/d/167DjhqJWysWPtkJLXHPpfF4uj6mEvCqK/view?usp=sharing",

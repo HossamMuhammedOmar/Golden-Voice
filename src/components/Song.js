@@ -1,9 +1,9 @@
-export default function Song() {
+export default function Song({ activeQuran }) {
   return (
     <div className="song-container">
-      <h1>Picture</h1>
-      <h1>Song Name</h1>
-      <h1>Artist</h1>
+      <img src={activeQuran.cover} />
+      <h2>{activeQuran.name}</h2>
+      <h3>{activeQuran.artist}</h3>
     </div>
   );
 }
