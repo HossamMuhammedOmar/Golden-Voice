@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import {
   faPlay,
   faAngleLeft,
@@ -21,12 +21,29 @@ export default function Player({ activeQuran, isPlaying, setIsPlaying }) {
     }
   };
 
+  const timeFormat = (time) => {
+    return (
+      Math.floor(time / 60) + ":" + ("0" + Math.floor(time % 60)).slice(-2)
+    );
+  };
+  const timeUpdateHandler = (e) => {
+    const current = e.target.currentTime;
+    const duration = e.target.duration;
+    setSoundInfo({ ...soundInfo, currentTime: current, duration });
+  };
+
+  // States
+  const [soundInfo, setSoundInfo] = useState({
+    currentTime: null,
+    duration: null,
+  });
+
   return (
     <div className="player-container">
       <div className="time-control">
-        <p>start time</p>
+        <p>{timeFormat(soundInfo.currentTime)}</p>
         <input type="range" />
-        <p>end time</p>
+        <p>{timeFormat(soundInfo.duration)}</p>
       </div>
       <div className="play-control">
         <FontAwesomeIcon className="skip-back" size="2x" icon={faAngleLeft} />
@@ -42,7 +59,12 @@ export default function Player({ activeQuran, isPlaying, setIsPlaying }) {
           icon={faAngleRight}
         />
       </div>
-      <audio type="audio/mp3" ref={audioRef} src={activeQuran.audio}></audio>
+      <audio
+        onTimeUpdate={timeUpdateHandler}
+        type="audio/mp3"
+        ref={audioRef}
+        src={activeQuran.audio}
+      ></audio>
     </div>
   );
 }
