@@ -1,0 +1,66 @@
+.library {
+  direction: rtl;
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 30rem;
+  height: 100%;
+  background-color: #1c1c1c;
+  box-shadow: 2px 2px 50px #75777b;
+  overflow-y: scroll;
+  text-align: right;
+  h2 {
+    padding: 2rem;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    color: #dedede;
+  }
+}
+
+.quran-library-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 1rem 2rem 1rem 2rem;
+  text-align: right;
+  cursor: pointer;
+  img {
+    width: 28%;
+    border-radius: 0.2rem;
+  }
+
+  &:hover {
+    background-color: #9ca3afb4;
+  }
+}
+
+.song-description {
+  padding-right: 1rem;
+
+  h3 {
+    font-size: 1rem;
+  }
+
+  h4 {
+    font-size: 0.9rem;
+    font-weight: normal;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgba(231, 231, 231, 0.5);
+  border-radius: 20px;
+  border: transparent;
+}

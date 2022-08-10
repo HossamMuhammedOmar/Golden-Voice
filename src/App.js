@@ -1,14 +1,22 @@
-import "./styles/app.scss";
-import Song from "./components/Song";
-import Player from "./components/Player";
-import quranData from "./util";
-import { useState } from "react";
+// IMPORT React Lib
+import { useState } from 'react'
+
+// IMPORT Style
+import './styles/app.scss'
+
+// IMPORT Components
+import Song from './components/Song'
+import Player from './components/Player'
+import Library from './components/Library'
+
+// IMPORT Data
+import quranData from './util'
 
 function App() {
   // States
-  const [quran, setQuran] = useState(quranData());
-  const [currentQuran, setCurrentQuran] = useState(quran[0]);
-  const [isPlaying, setIsPlaying] = useState(false);
+  const [quran, setQuran] = useState(quranData())
+  const [currentQuran, setCurrentQuran] = useState(quran[0])
+  const [isPlaying, setIsPlaying] = useState(false)
 
   return (
     <div className="App">
@@ -18,8 +26,9 @@ function App() {
         isPlaying={isPlaying}
         setIsPlaying={setIsPlaying}
       />
+      <Library allQuran={quran} />
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
