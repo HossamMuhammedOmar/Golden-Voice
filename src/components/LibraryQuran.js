@@ -1,11 +1,40 @@
-const LibraryQuran = ({ quran, allQuran, setCurrentQuran }) => {
+const LibraryQuran = ({
+  quran,
+  setCurrentQuran,
+  setIsPlaying,
+  allQuran,
+  setQuran,
+}) => {
   // Handlers
   const quranClickHandler = e => {
     setCurrentQuran(quran)
+    setIsPlaying(false)
+    const newClip = allQuran.map(q => {
+      if (quran.id === q.id) {
+        return {
+          ...q,
+          active: true,
+        }
+      } else {
+        return {
+          ...q,
+          active: false,
+        }
+      }
+    })
+
+    setQuran(newClip)
   }
 
   return (
-    <div onClick={quranClickHandler} className="quran-library-container">
+    <div
+      onClick={quranClickHandler}
+      className={
+        quran.active
+          ? 'active quran-library-container'
+          : 'quran-library-container'
+      }
+    >
       <img src={quran.cover} />
       <div className="song-description">
         <h3>{quran.name}</h3>

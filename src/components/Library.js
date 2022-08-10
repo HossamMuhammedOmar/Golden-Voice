@@ -1,6 +1,6 @@
 import LibraryQuran from './LibraryQuran'
 
-const Library = ({ allQuran, setCurrentQuran }) => {
+const Library = ({ allQuran, setCurrentQuran, setIsPlaying, setQuran }) => {
   return (
     <div className="library">
       <h2>المكتبة</h2>
@@ -8,9 +8,11 @@ const Library = ({ allQuran, setCurrentQuran }) => {
         {allQuran.map(quran => (
           <LibraryQuran
             key={quran.id}
-            allQuran={allQuran}
             quran={quran}
             setCurrentQuran={setCurrentQuran}
+            setIsPlaying={setIsPlaying}
+            allQuran={allQuran}
+            setQuran={setQuran}
           />
         ))}
       </div>

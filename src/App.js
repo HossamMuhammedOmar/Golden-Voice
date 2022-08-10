@@ -26,7 +26,12 @@ function App() {
         isPlaying={isPlaying}
         setIsPlaying={setIsPlaying}
       />
-      <Library allQuran={quran} setCurrentQuran={setCurrentQuran} />
+      <Library
+        allQuran={quran}
+        setCurrentQuran={setCurrentQuran}
+        setIsPlaying={setIsPlaying}
+        setQuran={setQuran}
+      />
     </div>
   )
 }

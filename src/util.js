@@ -66,7 +66,7 @@ function quran() {
         'https://docs.google.com/uc?export=download&id=1-sJrSZ0J2UOWEdhT0c_KXz72KcWIo6En',
       color: '',
       id: uuidv4(),
-      active: true,
+      active: false,
     },
     {
       name: 'إِذْ تَسْتَغِيثُونَ رَبَّكُمْ فَاسْتَجَابَ لَكُمْ',
