@@ -14,7 +14,7 @@ function quran() {
       active: true,
     },
     {
-      name: 'إِذْ تَسْتَغِيثُونَ رَبَّكُمْ فَاسْتَجَابَ لَكُمْ',
+      name: 'إِذْ تَسْتَغِيثُونَ رَبَّكُمْ',
       cover:
         'https://images.squarespace-cdn.com/content/v1/5d016c1ba9f2e7000120c08c/1560579210527-7LDCZH62S91OLOJIKAE9/AdobeStock_87517185.jpeg',
       artist: 'القارئ محمد صديق المنشاوي',
@@ -25,7 +25,7 @@ function quran() {
       active: false,
     },
     {
-      name: 'وَإِن يَمْسَسْكَ اللَّهُ بِضُرٍّ فَلَا كَاشِفَ لَهُ إِلَّا هُوَ',
+      name: 'فَلَا كَاشِفَ لَهُ إِلَّا هُوَ',
       cover:
         'https://media.istockphoto.com/photos/silhouette-of-a-big-mosque-on-blue-full-moon-in-night-background-picture-id1219894876?k=20&m=1219894876&s=170667a&w=0&h=qooEYIHwMNZOfG3BzdJv3_SSUUAOC5mnFHilUXUIi9k=',
       artist: 'القارئ محمد صديق المنشاوي',
@@ -47,7 +47,7 @@ function quran() {
       active: false,
     },
     {
-      name: 'كُلُّ الطَّعَامِ كَانَ حِلًّا لِّبَنِي إِسْرَائِيلَ',
+      name: 'كُلُّ الطَّعَامِ كَانَ حِلًّا',
       cover:
         'https://cdn.pixabay.com/photo/2018/09/28/19/07/islamic-3710002_1280.jpg',
       artist: 'القارئ محمد صديق المنشاوي',
@@ -69,7 +69,7 @@ function quran() {
       active: false,
     },
     {
-      name: 'إِذْ تَسْتَغِيثُونَ رَبَّكُمْ فَاسْتَجَابَ لَكُمْ',
+      name: 'إِذْ تَسْتَغِيثُونَ رَبَّكُمْ',
       cover:
         'https://images.squarespace-cdn.com/content/v1/5d016c1ba9f2e7000120c08c/1560579210527-7LDCZH62S91OLOJIKAE9/AdobeStock_87517185.jpeg',
       artist: 'القارئ محمد صديق المنشاوي',
@@ -80,7 +80,7 @@ function quran() {
       active: false,
     },
     {
-      name: 'وَإِن يَمْسَسْكَ اللَّهُ بِضُرٍّ فَلَا كَاشِفَ لَهُ إِلَّا هُوَ',
+      name: 'وَإِن يَمْسَسْكَ اللَّهُ بِضُرٍّ',
       cover:
         'https://media.istockphoto.com/photos/silhouette-of-a-big-mosque-on-blue-full-moon-in-night-background-picture-id1219894876?k=20&m=1219894876&s=170667a&w=0&h=qooEYIHwMNZOfG3BzdJv3_SSUUAOC5mnFHilUXUIi9k=',
       artist: 'القارئ محمد صديق المنشاوي',
@@ -102,7 +102,7 @@ function quran() {
       active: false,
     },
     {
-      name: 'كُلُّ الطَّعَامِ كَانَ حِلًّا لِّبَنِي إِسْرَائِيلَ',
+      name: 'كُلُّ الطَّعَامِ كَانَ حِلًّا',
       cover:
         'https://cdn.pixabay.com/photo/2018/09/28/19/07/islamic-3710002_1280.jpg',
       artist: 'القارئ محمد صديق المنشاوي',

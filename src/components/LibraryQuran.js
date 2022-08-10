@@ -31,7 +31,7 @@ const LibraryQuran = ({
       onClick={quranClickHandler}
       className={
         quran.active
-          ? 'active quran-library-container'
+          ? 'active-clip quran-library-container'
           : 'quran-library-container'
       }
     >

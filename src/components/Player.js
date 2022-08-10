@@ -23,7 +23,11 @@ export default function Player({ activeQuran, isPlaying, setIsPlaying }) {
   }
 
   const timeFormat = time => {
-    return Math.floor(time / 60) + ':' + ('0' + Math.floor(time % 60)).slice(-2)
+    if (time * 0 === 0) {
+      return (
+        Math.floor(time / 60) + ':' + ('0' + Math.floor(time % 60)).slice(-2)
+      )
+    }
   }
   const timeUpdateHandler = e => {
     const current = e.target.currentTime
@@ -49,11 +53,11 @@ export default function Player({ activeQuran, isPlaying, setIsPlaying }) {
         <input
           onChange={dragHandler}
           min={0}
-          max={soundInfo.duration}
+          max={soundInfo.duration || 0}
           value={soundInfo.currentTime}
           type="range"
         />
-        <p>{timeFormat(soundInfo.duration)}</p>
+        <p>{timeFormat(soundInfo.duration) || '0.00'} </p>
       </div>
       <div className="play-control">
         <FontAwesomeIcon className="skip-back" size="2x" icon={faAngleLeft} />

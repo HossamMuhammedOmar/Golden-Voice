@@ -1,8 +1,14 @@
 import LibraryQuran from './LibraryQuran'
 
-const Library = ({ allQuran, setCurrentQuran, setIsPlaying, setQuran }) => {
+const Library = ({
+  allQuran,
+  setCurrentQuran,
+  setIsPlaying,
+  setQuran,
+  libraryOpen,
+}) => {
   return (
-    <div className="library">
+    <div className={`library ${libraryOpen ? 'active-library-nav' : ''}`}>
       <h2>المكتبة</h2>
       <div className="library-quran">
         {allQuran.map(quran => (
