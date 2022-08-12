@@ -89,7 +89,7 @@ export default function Player({
           value={soundInfo.currentTime}
           type="range"
         />
-        <p>{timeFormat(soundInfo.duration) || '0.00'} </p>
+        <p>{soundInfo.duration ? timeFormat(soundInfo.duration) : '0.00'} </p>
       </div>
       <div className="play-control">
         <FontAwesomeIcon
