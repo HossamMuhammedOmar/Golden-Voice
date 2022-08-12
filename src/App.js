@@ -11,7 +11,7 @@ import Library from './components/Library'
 import Nav from './components/Nav'
 
 // IMPORT Data
-import quranData from './util'
+import quranData from './data'
 
 function App() {
   // States

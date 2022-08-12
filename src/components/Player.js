@@ -6,6 +6,7 @@ import {
   faAngleLeft,
   faAngleRight,
 } from '@fortawesome/free-solid-svg-icons'
+import { playNewAudio } from '../util'
 
 export default function Player({
   activeQuran,
@@ -68,21 +69,7 @@ export default function Player({
   const skipAudio = audio => {
     setCurrentQuran(audio)
     setIsPlaying(false)
-    const newClip = allQuran.map(q => {
-      if (audio.id === q.id) {
-        return {
-          ...q,
-          active: true,
-        }
-      } else {
-        return {
-          ...q,
-          active: false,
-        }
-      }
-    })
-
-    setQuran(newClip)
+    playNewAudio(allQuran, audio, setQuran)
   }
 
   // States

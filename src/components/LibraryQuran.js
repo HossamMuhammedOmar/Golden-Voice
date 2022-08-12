@@ -1,3 +1,5 @@
+import { playNewAudio } from '../util'
+
 const LibraryQuran = ({
   quran,
   setCurrentQuran,
@@ -6,24 +8,10 @@ const LibraryQuran = ({
   setQuran,
 }) => {
   // Handlers
-  const quranClickHandler = e => {
+  const quranClickHandler = () => {
     setCurrentQuran(quran)
     setIsPlaying(false)
-    const newClip = allQuran.map(q => {
-      if (quran.id === q.id) {
-        return {
-          ...q,
-          active: true,
-        }
-      } else {
-        return {
-          ...q,
-          active: false,
-        }
-      }
-    })
-
-    setQuran(newClip)
+    playNewAudio(allQuran, quran, setQuran)
   }
 
   return (
@@ -35,7 +23,7 @@ const LibraryQuran = ({
           : 'quran-library-container'
       }
     >
-      <img src={quran.cover} />
+      <img src={quran.cover} alt={quran.name} />
       <div className="song-description">
         <h3>{quran.name}</h3>
         <h4>{quran.artist}</h4>
