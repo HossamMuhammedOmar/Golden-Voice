@@ -52,24 +52,24 @@ export default function Player({
       quran => quran.id === activeQuran.id
     )
 
-    if (dir === 'skip-back') {
-      if (indexOfCurrentAudio > 0) {
-        skipAudioByIndex(allQuran[indexOfCurrentAudio - 1])
-      }
-    }
     if (dir === 'skip-forward') {
-      if (indexOfCurrentAudio < allQuran.length - 1) {
-        skipAudioByIndex(allQuran[indexOfCurrentAudio + 1])
+      skipAudio(allQuran[(indexOfCurrentAudio + 1) % allQuran.length])
+    }
+
+    if (dir === 'skip-back') {
+      if (indexOfCurrentAudio <= 0) {
+        skipAudio(allQuran[allQuran.length - 1])
+      } else {
+        skipAudio(allQuran[indexOfCurrentAudio - 1])
       }
     }
   }
 
-  const skipAudioByIndex = index => {
-    setCurrentQuran(index)
+  const skipAudio = audio => {
+    setCurrentQuran(audio)
     setIsPlaying(false)
     const newClip = allQuran.map(q => {
-      console.log(index.id === q.id)
-      if (index.id === q.id) {
+      if (audio.id === q.id) {
         return {
           ...q,
           active: true,
