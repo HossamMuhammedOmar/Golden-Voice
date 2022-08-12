@@ -48,56 +48,41 @@ export default function Player({
   }
 
   const skipTrackHandler = dir => {
-    let indexOfCurrentAudio = 0
-    for (let i = 0; i < allQuran.length; i++) {
-      if (allQuran[i].id === activeQuran.id) {
-        indexOfCurrentAudio = i
-        break
-      }
-    }
+    let indexOfCurrentAudio = allQuran.findIndex(
+      quran => quran.id === activeQuran.id
+    )
 
     if (dir === 'skip-back') {
       if (indexOfCurrentAudio > 0) {
-        setCurrentQuran(allQuran[indexOfCurrentAudio - 1])
-        setIsPlaying(false)
-        const newClip = allQuran.map(q => {
-          if (allQuran[indexOfCurrentAudio - 1].id === q.id) {
-            return {
-              ...q,
-              active: true,
-            }
-          } else {
-            return {
-              ...q,
-              active: false,
-            }
-          }
-        })
-
-        setQuran(newClip)
+        skipAudioByIndex(allQuran[indexOfCurrentAudio - 1])
       }
     }
     if (dir === 'skip-forward') {
       if (indexOfCurrentAudio < allQuran.length - 1) {
-        setCurrentQuran(allQuran[indexOfCurrentAudio + 1])
-        setIsPlaying(false)
-        const newClip = allQuran.map(q => {
-          if (allQuran[indexOfCurrentAudio + 1].id === q.id) {
-            return {
-              ...q,
-              active: true,
-            }
-          } else {
-            return {
-              ...q,
-              active: false,
-            }
-          }
-        })
-
-        setQuran(newClip)
+        skipAudioByIndex(allQuran[indexOfCurrentAudio + 1])
       }
     }
+  }
+
+  const skipAudioByIndex = index => {
+    setCurrentQuran(index)
+    setIsPlaying(false)
+    const newClip = allQuran.map(q => {
+      console.log(index.id === q.id)
+      if (index.id === q.id) {
+        return {
+          ...q,
+          active: true,
+        }
+      } else {
+        return {
+          ...q,
+          active: false,
+        }
+      }
+    })
+
+    setQuran(newClip)
   }
 
   // States
