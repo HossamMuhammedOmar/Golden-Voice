@@ -7,7 +7,14 @@ import {
   faAngleRight,
 } from '@fortawesome/free-solid-svg-icons'
 
-export default function Player({ activeQuran, isPlaying, setIsPlaying }) {
+export default function Player({
+  activeQuran,
+  isPlaying,
+  setIsPlaying,
+  allQuran,
+  setCurrentQuran,
+  setQuran,
+}) {
   // Ref
   const audioRef = useRef(null)
 
@@ -40,6 +47,59 @@ export default function Player({ activeQuran, isPlaying, setIsPlaying }) {
     setSoundInfo({ ...soundInfo, currentTime: e.target.value })
   }
 
+  const skipTrackHandler = dir => {
+    let indexOfCurrentAudio = 0
+    for (let i = 0; i < allQuran.length; i++) {
+      if (allQuran[i].id === activeQuran.id) {
+        indexOfCurrentAudio = i
+        break
+      }
+    }
+
+    if (dir === 'skip-back') {
+      if (indexOfCurrentAudio > 0) {
+        setCurrentQuran(allQuran[indexOfCurrentAudio - 1])
+        setIsPlaying(false)
+        const newClip = allQuran.map(q => {
+          if (allQuran[indexOfCurrentAudio - 1].id === q.id) {
+            return {
+              ...q,
+              active: true,
+            }
+          } else {
+            return {
+              ...q,
+              active: false,
+            }
+          }
+        })
+
+        setQuran(newClip)
+      }
+    }
+    if (dir === 'skip-forward') {
+      if (indexOfCurrentAudio < allQuran.length - 1) {
+        setCurrentQuran(allQuran[indexOfCurrentAudio + 1])
+        setIsPlaying(false)
+        const newClip = allQuran.map(q => {
+          if (allQuran[indexOfCurrentAudio + 1].id === q.id) {
+            return {
+              ...q,
+              active: true,
+            }
+          } else {
+            return {
+              ...q,
+              active: false,
+            }
+          }
+        })
+
+        setQuran(newClip)
+      }
+    }
+  }
+
   // States
   const [soundInfo, setSoundInfo] = useState({
     currentTime: 0,
@@ -60,7 +120,12 @@ export default function Player({ activeQuran, isPlaying, setIsPlaying }) {
         <p>{timeFormat(soundInfo.duration) || '0.00'} </p>
       </div>
       <div className="play-control">
-        <FontAwesomeIcon className="skip-back" size="2x" icon={faAngleLeft} />
+        <FontAwesomeIcon
+          className="skip-back"
+          onClick={() => skipTrackHandler('skip-back')}
+          size="2x"
+          icon={faAngleLeft}
+        />
         <FontAwesomeIcon
           onClick={playHandler}
           className="play"
@@ -69,6 +134,7 @@ export default function Player({ activeQuran, isPlaying, setIsPlaying }) {
         />
         <FontAwesomeIcon
           className="skip-forward"
+          onClick={() => skipTrackHandler('skip-forward')}
           size="2x"
           icon={faAngleRight}
         />

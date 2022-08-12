@@ -28,6 +28,9 @@ function App() {
         activeQuran={currentQuran}
         isPlaying={isPlaying}
         setIsPlaying={setIsPlaying}
+        allQuran={quran}
+        setQuran={setQuran}
+        setCurrentQuran={setCurrentQuran}
       />
       <Library
         allQuran={quran}
