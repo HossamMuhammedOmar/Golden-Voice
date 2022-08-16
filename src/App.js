@@ -1,5 +1,5 @@
 // IMPORT React Lib
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 
 // IMPORT Style
 import './styles/app.scss'
@@ -14,11 +14,34 @@ import Nav from './components/Nav'
 import quranData from './data'
 
 function App() {
+  // Ref
+  const audioRef = useRef(null)
   // States
   const [quran, setQuran] = useState(quranData())
   const [currentQuran, setCurrentQuran] = useState(quran[0])
   const [isPlaying, setIsPlaying] = useState(false)
   const [libraryOpen, setLibraryOpen] = useState(false)
+
+  const [soundInfo, setSoundInfo] = useState({
+    currentTime: 0,
+    duration: 0,
+    animationPercentage: 0,
+  })
+
+  // Handler
+  const timeUpdateHandler = e => {
+    const current = e.target.currentTime
+    const duration = e.target.duration
+    const roundedCurrent = Math.round(current)
+    const roundedDuration = Math.round(duration)
+    const animation = Math.round((roundedCurrent / roundedDuration) * 100)
+    setSoundInfo({
+      ...soundInfo,
+      currentTime: current,
+      duration,
+      animationPercentage: animation,
+    })
+  }
 
   return (
     <div className="App">
@@ -31,6 +54,9 @@ function App() {
         allQuran={quran}
         setQuran={setQuran}
         setCurrentQuran={setCurrentQuran}
+        audioRef={audioRef}
+        setSoundInfo={setSoundInfo}
+        soundInfo={soundInfo}
       />
       <Library
         allQuran={quran}
@@ -38,7 +64,17 @@ function App() {
         setIsPlaying={setIsPlaying}
         setQuran={setQuran}
         libraryOpen={libraryOpen}
+        audioRef={audioRef}
+        isPlaying={isPlaying}
       />
+
+      <audio
+        onTimeUpdate={timeUpdateHandler}
+        onLoadedMetadata={timeUpdateHandler}
+        type="audio/mp3"
+        ref={audioRef}
+        src={currentQuran.audio}
+      ></audio>
     </div>
   )
 }

@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { useRef, useState } from 'react'
+import { useState, useEffect } from 'react'
 import {
   faPlay,
   faPause,
@@ -15,9 +15,13 @@ export default function Player({
   allQuran,
   setCurrentQuran,
   setQuran,
+  audioRef,
+  setSoundInfo,
+  soundInfo,
 }) {
-  // Ref
-  const audioRef = useRef(null)
+  useEffect(() => {
+    playNewAudio(allQuran, activeQuran, setQuran)
+  }, [activeQuran])
 
   // Event Handler
   const playHandler = () => {
@@ -38,41 +42,30 @@ export default function Player({
     }
   }
 
-  const timeUpdateHandler = e => {
-    const current = e.target.currentTime
-    const duration = e.target.duration
-    const roundedCurrent = Math.round(current)
-    const roundedDuration = Math.round(duration)
-    const animation = Math.round((roundedCurrent / roundedDuration) * 100)
-    setSoundInfo({
-      ...soundInfo,
-      currentTime: current,
-      duration,
-      animationPercentage: animation,
-    })
-  }
-
   const dragHandler = e => {
     audioRef.current.currentTime = e.target.value
     setSoundInfo({ ...soundInfo, currentTime: e.target.value })
   }
 
-  const skipTrackHandler = dir => {
+  const skipTrackHandler = async dir => {
     let indexOfCurrentAudio = allQuran.findIndex(
       quran => quran.id === activeQuran.id
     )
 
     if (dir === 'skip-forward') {
-      skipAudio(allQuran[(indexOfCurrentAudio + 1) % allQuran.length])
+      await skipAudio(allQuran[(indexOfCurrentAudio + 1) % allQuran.length])
     }
 
     if (dir === 'skip-back') {
       if (indexOfCurrentAudio <= 0) {
-        skipAudio(allQuran[allQuran.length - 1])
+        await skipAudio(allQuran[allQuran.length - 1])
       } else {
-        skipAudio(allQuran[indexOfCurrentAudio - 1])
+        await skipAudio(allQuran[indexOfCurrentAudio - 1])
       }
     }
+
+    setIsPlaying(true)
+    audioRef.current.play()
   }
 
   const skipAudio = audio => {
@@ -81,12 +74,14 @@ export default function Player({
     playNewAudio(allQuran, audio, setQuran)
   }
 
-  // States
-  const [soundInfo, setSoundInfo] = useState({
-    currentTime: 0,
-    duration: 0,
-    animationPercentage: 0,
-  })
+  const audioEndHandler = async () => {
+    let indexOfCurrentAudio = allQuran.findIndex(
+      quran => quran.id === activeQuran.id
+    )
+    await skipAudio(allQuran[(indexOfCurrentAudio + 1) % allQuran.length])
+    setIsPlaying(true)
+    audioRef.current.play()
+  }
 
   // Animation Track
   const trackAnimation = {
@@ -134,13 +129,6 @@ export default function Player({
           icon={faAngleRight}
         />
       </div>
-      <audio
-        onTimeUpdate={timeUpdateHandler}
-        onLoadedMetadata={timeUpdateHandler}
-        type="audio/mp3"
-        ref={audioRef}
-        src={activeQuran.audio}
-      ></audio>
     </div>
   )
 }
