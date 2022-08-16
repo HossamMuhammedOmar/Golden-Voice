@@ -9,7 +9,7 @@ function quran() {
       artist: 'القارئ محمد صديق المنشاوي',
       audio:
         'https://docs.google.com/uc?export=download&id=1-sJrSZ0J2UOWEdhT0c_KXz72KcWIo6En',
-      color: '',
+      color: ['#0E2B47', '#2A6097'],
       id: uuidv4(),
       active: true,
     },
@@ -20,7 +20,7 @@ function quran() {
       artist: 'القارئ محمد صديق المنشاوي',
       audio:
         'https://docs.google.com/uc?export=download&id=167DjhqJWysWPtkJLXHPpfF4uj6mEvCqK',
-      color: '',
+      color: ['#6A5130', '#060606'],
       id: uuidv4(),
       active: false,
     },
@@ -31,7 +31,7 @@ function quran() {
       artist: 'القارئ محمد صديق المنشاوي',
       audio:
         'https://docs.google.com/uc?export=download&id=1kXD-xjVxdiO78C6k81lXYX5uogemjbYh',
-      color: '',
+      color: ['#9DE4F9', '#73CDE3'],
       id: uuidv4(),
       active: false,
     },
@@ -42,7 +42,7 @@ function quran() {
       artist: 'القارئ محمد صديق المنشاوي',
       audio:
         'https://docs.google.com/uc?export=download&id=14d1kjHAHMtnTGjgAtQLahiJiLVBzUDp0',
-      color: '',
+      color: ['#0F3287', '#0332B0'],
       id: uuidv4(),
       active: false,
     },
@@ -53,7 +53,7 @@ function quran() {
       artist: 'القارئ محمد صديق المنشاوي',
       audio:
         'https://docs.google.com/uc?export=download&id=1NYreFm4AC_umhQYesZrdDyegYPS6LUDl',
-      color: '',
+      color: ['#FD7400', '#954600'],
       id: uuidv4(),
       active: false,
     },

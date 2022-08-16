@@ -37,10 +37,19 @@ export default function Player({
       )
     }
   }
+
   const timeUpdateHandler = e => {
     const current = e.target.currentTime
     const duration = e.target.duration
-    setSoundInfo({ ...soundInfo, currentTime: current, duration })
+    const roundedCurrent = Math.round(current)
+    const roundedDuration = Math.round(duration)
+    const animation = Math.round((roundedCurrent / roundedDuration) * 100)
+    setSoundInfo({
+      ...soundInfo,
+      currentTime: current,
+      duration,
+      animationPercentage: animation,
+    })
   }
 
   const dragHandler = e => {
@@ -76,19 +85,33 @@ export default function Player({
   const [soundInfo, setSoundInfo] = useState({
     currentTime: 0,
     duration: 0,
+    animationPercentage: 0,
   })
+
+  // Animation Track
+  const trackAnimation = {
+    transform: `translateX(${soundInfo.animationPercentage}%)`,
+  }
 
   return (
     <div className="player-container">
       <div className="time-control">
         <p>{timeFormat(soundInfo.currentTime)}</p>
-        <input
-          onChange={dragHandler}
-          min={0}
-          max={soundInfo.duration || 0}
-          value={soundInfo.currentTime}
-          type="range"
-        />
+        <div
+          style={{
+            background: `linear-gradient(to right, ${activeQuran.color[0]}, ${activeQuran.color[1]})`,
+          }}
+          className="track"
+        >
+          <input
+            onChange={dragHandler}
+            min={0}
+            max={soundInfo.duration || 0}
+            value={soundInfo.currentTime}
+            type="range"
+          />
+          <div style={trackAnimation} className="track-animate"></div>
+        </div>
         <p>{soundInfo.duration ? timeFormat(soundInfo.duration) : '0.00'} </p>
       </div>
       <div className="play-control">
