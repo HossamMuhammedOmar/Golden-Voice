@@ -15,8 +15,12 @@ const LibraryQuran = ({
     setIsPlaying(false)
     playNewAudio(allQuran, quran, setQuran)
     const promiseAudio = audioRef.current.play()
+
     if (promiseAudio !== undefined) {
       promiseAudio.then(_ => {
+        // setTimeout(function () {
+        //   audioRef.current.play()
+        // }, 150)
         audioRef.current.play()
         setIsPlaying(true)
       })

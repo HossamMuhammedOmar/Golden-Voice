@@ -74,15 +74,6 @@ export default function Player({
     playNewAudio(allQuran, audio, setQuran)
   }
 
-  const audioEndHandler = async () => {
-    let indexOfCurrentAudio = allQuran.findIndex(
-      quran => quran.id === activeQuran.id
-    )
-    await skipAudio(allQuran[(indexOfCurrentAudio + 1) % allQuran.length])
-    setIsPlaying(true)
-    audioRef.current.play()
-  }
-
   // Animation Track
   const trackAnimation = {
     transform: `translateX(${soundInfo.animationPercentage}%)`,

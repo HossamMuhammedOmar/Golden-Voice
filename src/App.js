@@ -43,6 +43,19 @@ function App() {
     })
   }
 
+  const audioEndHandler = async () => {
+    let indexOfCurrentAudio = quran.findIndex(
+      quran => quran.id === currentQuran.id
+    )
+    await setCurrentQuran(quran[(indexOfCurrentAudio + 1) % quran.length])
+
+    if (isPlaying) {
+      setTimeout(function () {
+        audioRef.current.play()
+      }, 150)
+    }
+  }
+
   return (
     <div className="App">
       <Nav libraryOpen={libraryOpen} setLibraryOpen={setLibraryOpen} />
@@ -74,6 +87,7 @@ function App() {
         type="audio/mp3"
         ref={audioRef}
         src={currentQuran.audio}
+        onEnded={audioEndHandler}
       ></audio>
     </div>
   )
