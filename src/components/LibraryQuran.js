@@ -12,19 +12,13 @@ const LibraryQuran = ({
   // Handlers
   const quranClickHandler = () => {
     setCurrentQuran(quran)
-    setIsPlaying(false)
+    setIsPlaying(true)
     playNewAudio(allQuran, quran, setQuran)
-    const promiseAudio = audioRef.current.play()
+    // const promiseAudio = audioRef.current.play()
 
-    if (promiseAudio !== undefined) {
-      promiseAudio.then(_ => {
-        // setTimeout(function () {
-        //   audioRef.current.play()
-        // }, 150)
-        audioRef.current.play()
-        setIsPlaying(true)
-      })
-    }
+    setTimeout(function () {
+      audioRef.current.play()
+    }, 150)
   }
 
   return (

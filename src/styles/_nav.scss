@@ -28,3 +28,15 @@ nav {
     }
   }
 }
+
+@media screen and (max-width: 768px) {
+  nav {
+    button {
+      z-index: 10;
+      background: rgba(255, 255, 255, 0.769);
+    }
+
+    justify-content: space-between;
+    padding: 0 45px;
+  }
+}

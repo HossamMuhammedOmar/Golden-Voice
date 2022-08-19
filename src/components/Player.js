@@ -21,6 +21,7 @@ export default function Player({
 }) {
   useEffect(() => {
     playNewAudio(allQuran, activeQuran, setQuran)
+    soundInfo.animationPercentage = 0
   }, [activeQuran])
 
   // Event Handler
@@ -85,7 +86,11 @@ export default function Player({
         <p>{timeFormat(soundInfo.currentTime)}</p>
         <div
           style={{
-            background: `linear-gradient(to right, ${activeQuran.color[0]}, ${activeQuran.color[1]})`,
+            background: `${
+              isPlaying
+                ? `linear-gradient(to right, ${activeQuran.color[0]}, ${activeQuran.color[1]})`
+                : `background-color: rgb(204, 204, 204)`
+            }`,
           }}
           className="track"
         >

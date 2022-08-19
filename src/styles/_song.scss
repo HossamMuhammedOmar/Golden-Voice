@@ -24,3 +24,19 @@
     font-size: 1rem;
   }
 }
+
+@media screen and (max-width: 768px) {
+  .song-container {
+    img {
+      height: 200px;
+    }
+
+    h3 {
+      font-size: 0.8rem;
+    }
+
+    h2 {
+      font-size: 1.2rem;
+    }
+  }
+}
