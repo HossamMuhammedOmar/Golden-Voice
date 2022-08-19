@@ -15,3 +15,13 @@ export const playNewAudio = (allQuran, audio, setQuran) => {
 
   setQuran(newClip)
 }
+
+export const activeLibraryHandler = (
+  allQuran,
+  activeQuran,
+  setQuran,
+  soundInfo
+) => {
+  playNewAudio(allQuran, activeQuran, setQuran)
+  soundInfo.animationPercentage = 0
+}

@@ -6,7 +6,7 @@ import {
   faAngleLeft,
   faAngleRight,
 } from '@fortawesome/free-solid-svg-icons'
-import { playNewAudio } from '../util'
+import { playNewAudio, activeLibraryHandler } from '../util'
 
 export default function Player({
   activeQuran,
@@ -20,11 +20,6 @@ export default function Player({
   soundInfo,
 }) {
   // Event Handler
-
-  const activeLibraryHandler = () => {
-    playNewAudio(allQuran, activeQuran, setQuran)
-    soundInfo.animationPercentage = 0
-  }
 
   const playHandler = () => {
     if (isPlaying) {
@@ -50,7 +45,7 @@ export default function Player({
   }
 
   const skipTrackHandler = async dir => {
-    activeLibraryHandler()
+    activeLibraryHandler(allQuran, activeQuran, setQuran, soundInfo)
 
     let indexOfCurrentAudio = allQuran.findIndex(
       quran => quran.id === activeQuran.id

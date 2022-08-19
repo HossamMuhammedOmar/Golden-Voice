@@ -13,6 +13,9 @@ import Nav from './components/Nav'
 // IMPORT Data
 import quranData from './data'
 
+// IMPORT util
+import { activeLibraryHandler } from './util'
+
 function App() {
   // Ref
   const audioRef = useRef(null)
@@ -47,6 +50,20 @@ function App() {
     let indexOfCurrentAudio = quran.findIndex(
       quran => quran.id === currentQuran.id
     )
+
+    // playNewAudio(
+    //   quran,
+    //   quran[(indexOfCurrentAudio + 1) % quran.length],
+    //   setQuran
+    // )
+
+    activeLibraryHandler(
+      quran,
+      quran[(indexOfCurrentAudio + 1) % quran.length],
+      setQuran,
+      soundInfo
+    )
+
     await setCurrentQuran(quran[(indexOfCurrentAudio + 1) % quran.length])
 
     if (isPlaying) {
