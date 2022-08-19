@@ -47,6 +47,13 @@
     outline: none;
   }
 
+  input[type='range']::-moz-range-thumb {
+    appearance: none;
+
+    background-color: transparent;
+    border: none;
+  }
+
   .track {
     margin: 1rem 0;
     background-color: antiquewhite;

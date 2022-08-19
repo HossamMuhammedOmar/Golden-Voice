@@ -79,6 +79,7 @@ function App() {
         libraryOpen={libraryOpen}
         audioRef={audioRef}
         isPlaying={isPlaying}
+        soundInfo={soundInfo}
       />
 
       <audio

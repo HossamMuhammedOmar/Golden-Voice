@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { useState, useEffect } from 'react'
+
 import {
   faPlay,
   faPause,
@@ -19,12 +19,13 @@ export default function Player({
   setSoundInfo,
   soundInfo,
 }) {
-  useEffect(() => {
+  // Event Handler
+
+  const activeLibraryHandler = () => {
     playNewAudio(allQuran, activeQuran, setQuran)
     soundInfo.animationPercentage = 0
-  }, [activeQuran])
+  }
 
-  // Event Handler
   const playHandler = () => {
     if (isPlaying) {
       audioRef.current.pause()
@@ -49,6 +50,8 @@ export default function Player({
   }
 
   const skipTrackHandler = async dir => {
+    activeLibraryHandler()
+
     let indexOfCurrentAudio = allQuran.findIndex(
       quran => quran.id === activeQuran.id
     )

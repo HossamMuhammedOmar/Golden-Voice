@@ -8,6 +8,7 @@ const Library = ({
   libraryOpen,
   audioRef,
   isPlaying,
+  soundInfo,
 }) => {
   return (
     <div className={`library ${libraryOpen ? 'active-library-nav' : ''}`}>
@@ -23,6 +24,7 @@ const Library = ({
             setQuran={setQuran}
             audioRef={audioRef}
             isPlaying={isPlaying}
+            soundInfo={soundInfo}
           />
         ))}
       </div>

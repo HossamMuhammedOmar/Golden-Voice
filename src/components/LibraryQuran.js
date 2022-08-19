@@ -8,6 +8,7 @@ const LibraryQuran = ({
   setQuran,
   audioRef,
   isPlaying,
+  soundInfo,
 }) => {
   // Handlers
   const quranClickHandler = () => {
@@ -15,9 +16,9 @@ const LibraryQuran = ({
     setIsPlaying(true)
     playNewAudio(allQuran, quran, setQuran)
     // const promiseAudio = audioRef.current.play()
-
+    soundInfo.animationPercentage = 0
     setTimeout(function () {
-      audioRef.current.play()
+      audioRef.current.play().catch(e => console.log(e))
     }, 150)
   }
 
